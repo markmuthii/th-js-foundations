@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WOD</title>
+  </head>
+  <body>
+    <p id="output">Value will show up here</p>
+
+    <form id="form">
+      <input type="text" placeholder="Enter property" id="prop" />
+      <button type="submit">Show Value</button>
+    </form>
+
+    <script>
+      const output = document.getElementById("output");
+      const form = document.getElementById("form");
+
+      const student = {
+        age: 20,
+        dob: 2005,
+        name: "Diana",
+        course: "Software Development",
+        goToClass: function () {
+          return `${this.name} is going to class`;
+        },
+      };
+
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        const prop = document.getElementById("prop").value; // age, name, dob, course
+
+        console.log(prop);
+        // console.log(typeof prop);
+
+        // const value = student.prop; // This will not work since we do not have a property inside student called prop
+        const value = student[prop]; // This works, since the prop will evaluate to whatever the prop variable contains
+
+        console.log(value);
+
+        output.textContent = value;
+      };
+    </script>
+  </body>
+</html>
